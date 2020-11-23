@@ -1,8 +1,9 @@
+// user.swift
 //
 //  User.swift
-//  barky
+//  dog tinder
 //
-//  Created by Derrick Lee on 11/12/20.
+//  Created by Derrick Lee on 10/11/20.
 //
 
 import Foundation
@@ -16,19 +17,15 @@ class User: Identifiable, ObservableObject {
     @Published var lastName: String = "Smith"
     @Published var city: String = "NYC"
     @Published var state: String = "NY"
-    @Published var morning: Bool = false
-    @Published var afterNoon: Bool = false
-    @Published var night: Bool = false
+    @Published var email: String
     @Published var listOfDogs: [Dog] = []
 
-    init(firstName: String, lastName: String, city: String, state: String, morning: Bool, afterNoon: Bool, night: Bool, listOfDogs: [Dog]) {
+    init(firstName: String, lastName: String, city: String, state: String, email: String, listOfDogs: [Dog]) {
         self.firstName = firstName
         self.lastName = lastName
         self.city = city
         self.state = state
-        self.morning = morning
-        self.afterNoon = afterNoon
-        self.night = night
+        self.email = email
         self.userImage = "MiguelLee"
         self.listOfDogs.append(contentsOf: listOfDogs)
     }

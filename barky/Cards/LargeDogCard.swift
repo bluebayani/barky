@@ -1,14 +1,16 @@
 //
 //  LargeDogCard.swift
-//  barky
+//  dog tinder
 //
-//  Created by Derrick Lee on 11/12/20.
+//  Created by Blue Bayani on 10/30/20.
 //
 
 import Foundation
 import SwiftUI
 import UIKit
 
+//creates a larger card for the home view.
+//shows the dog image, dog name, breed, and gender
 struct LargeDogCard: View {
     @ObservedObject var dog: Dog
 
@@ -36,6 +38,8 @@ struct LargeDogCard: View {
         .frame(maxWidth: .infinity, alignment: .center)
         .background(Color.white)
         .modifier(CardModifier())
-        .padding(.all, 10)
+        .padding(EdgeInsets(top: 12, leading: 32, bottom: 12, trailing: 32))
     }
 }
+
+
