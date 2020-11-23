@@ -5,7 +5,7 @@
 // display user information on the screen.
 // move pencil icon to the top right of the page.
 // create view for editing the user info
-// includes: text fields (name, city, state), toggle boxes (availibility: morning, noon, night), and adding and deleting the list of dog objects (name for now)
+// includes: text fields (name, city, state), and adding, editing and deleting the list of dog objects
 
 import SwiftUI
 
@@ -16,6 +16,7 @@ struct UserProfileView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .center) {
+                    //displays the profile image, first and last name, and city and state.
                     Image("\(profile.userImage)")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -36,9 +37,11 @@ struct UserProfileView: View {
                 Spacer()
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200, alignment: .center)
                     .padding(.bottom, 10)
+                    // navigation button to edit the user profile
                     .navigationBarItems(trailing: HStack { AddButton(destination: EditView(profile: profile)) })
                     .groupBoxStyle(/*@START_MENU_TOKEN@*/DefaultGroupBoxStyle()/*@END_MENU_TOKEN@*/)
                 LazyVStack {
+                    // this code generates only the user's list of dogs. when the doc card is clicked it will pull up DetailedViewSimple.swift
                     ForEach(profile.listOfDogs, id: \.id) { dog in
                         NavigationLink(destination: detailedViewSimple(dog: dog)) {
                             SmallDogCard(dog: dog)
@@ -51,10 +54,10 @@ struct UserProfileView: View {
     }
 }
 
+//edit view allows us to edit the user's first name, last name, city, state, and dogs.
 struct EditView: View {
     @ObservedObject var profile: User
     var body: some View {
-        // removed Form{} wrapper around the stacks. it just made things look funnyS
         NavigationView {
             VStack(alignment: .leading, spacing: 5) {
                 ScrollView {
@@ -78,20 +81,6 @@ struct EditView: View {
                         .bold()
                     TextField("\(profile.state)", text: $profile.state).textFieldStyle(RoundedBorderTextFieldStyle())
                 }
-//                VStack {
-//                    Group {
-//                        Toggle(isOn: $profile.morning) {
-//                            Text("Morning")
-//                        }
-//                        Toggle(isOn: $profile.afterNoon) {
-//                            Text("Afternoon")
-//                        }
-//                        Toggle(isOn: $profile.night) {
-//                            Text("Night")
-//                        }
-//                    }
-//                }
-//                Spacer()
                 List {
                     ForEach(profile.listOfDogs, id: \.id) { dog in
                         NavigationLink(destination: EditDog(dog: dog)) {
@@ -101,11 +90,6 @@ struct EditView: View {
                     .onDelete(perform: delete)
                     .onTapGesture(perform: {
                         print("Pressed")
-                        // NavigationLink(destination: EditDog(dog:user.listOfDogsp[$0])){}
-
-                        // ForEach(profile.listOfDogs, id: \.id) { dog in
-                        // NavigationLink(destination: EditDog(dog:dog)){}
-                        // }
                     })
                 }
                 Spacer()
@@ -116,7 +100,6 @@ struct EditView: View {
     }
 
     func addRow() {
-        // add row function needs to be able to append a dog object. default is
         let defaultDog = Dog(image: "dog", name: "Dog name", breed: "a good dog", gender: "F", temperament: "good", size: "6' ", weight: 12, description: "very good dog")
         profile.listOfDogs.append(defaultDog)
     }
@@ -139,13 +122,13 @@ struct UserView_Previews: PreviewProvider {
 
 struct AddButton<Destination: View>: View {
     var destination: Destination
-
     var body: some View {
         NavigationLink(destination: self.destination) { Image(systemName: "pencil") }
             .padding(.top)
     }
 }
 
+// a dog obj will be passed in and will allow us to edit the information for that particular dog.
 struct EditDog: View {
     @ObservedObject var dog: Dog
     var body: some View {

@@ -16,10 +16,6 @@ struct ContentView: View {
                 Image(systemName: "house")
                 Text("Home")
             }
-//            ChatView().tabItem {
-//                Image(systemName: "message")
-//                Text("Chat")
-//            }
             UserProfileView().tabItem {
                 Image(systemName: "person")
                 Text("Profile")

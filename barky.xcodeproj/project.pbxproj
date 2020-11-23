@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2223DBBB256889BA005308F0 /* DetailedViewSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223DBBA256889BA005308F0 /* DetailedViewSimple.swift */; };
+		2223DBC325689545005308F0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223DBC225689545005308F0 /* LoginView.swift */; };
 		9193BA49255D4EBF00B15A30 /* barkyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193BA48255D4EBF00B15A30 /* barkyApp.swift */; };
 		9193BA4B255D4EBF00B15A30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193BA4A255D4EBF00B15A30 /* ContentView.swift */; };
 		9193BA4D255D4EC200B15A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9193BA4C255D4EC200B15A30 /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2223DBBA256889BA005308F0 /* DetailedViewSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewSimple.swift; sourceTree = "<group>"; };
+		2223DBC225689545005308F0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9193BA45255D4EBF00B15A30 /* barky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9193BA48255D4EBF00B15A30 /* barkyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barkyApp.swift; sourceTree = "<group>"; };
 		9193BA4A255D4EBF00B15A30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,8 +120,6 @@
 				9193BA79255D4F2A00B15A30 /* Views */,
 				9193BA78255D4F2200B15A30 /* Database */,
 				9193BA76255D4EF800B15A30 /* Cards */,
-				9193BA48255D4EBF00B15A30 /* barkyApp.swift */,
-				9193BA4A255D4EBF00B15A30 /* ContentView.swift */,
 				9193BA4C255D4EC200B15A30 /* Assets.xcassets */,
 				9193BA51255D4EC200B15A30 /* Info.plist */,
 				9193BA4E255D4EC200B15A30 /* Preview Content */,
@@ -158,6 +160,7 @@
 				9193BA8C255D506F00B15A30 /* LargeDogCard.swift */,
 				9193BA91255D508400B15A30 /* DetailedView.swift */,
 				9193BA96255D509A00B15A30 /* CardModifier.swift */,
+				2223DBBA256889BA005308F0 /* DetailedViewSimple.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -175,8 +178,11 @@
 		9193BA79255D4F2A00B15A30 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9193BA48255D4EBF00B15A30 /* barkyApp.swift */,
 				9193BA7A255D4FFD00B15A30 /* UserProfileView.swift */,
 				9193BA82255D501400B15A30 /* HomeView.swift */,
+				9193BA4A255D4EBF00B15A30 /* ContentView.swift */,
+				2223DBC225689545005308F0 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +316,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2223DBC325689545005308F0 /* LoginView.swift in Sources */,
+				2223DBBB256889BA005308F0 /* DetailedViewSimple.swift in Sources */,
 				9193BA8D255D506F00B15A30 /* LargeDogCard.swift in Sources */,
 				9193BA4B255D4EBF00B15A30 /* ContentView.swift in Sources */,
 				9193BA83255D501400B15A30 /* HomeView.swift in Sources */,

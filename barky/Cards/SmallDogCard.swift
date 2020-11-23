@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
+//a slimmer card view, displays the dog name, breed, and gender
 struct SmallDogCard: View {
     @ObservedObject var dog: Dog
 
@@ -40,9 +41,8 @@ struct SmallDogCard: View {
     }
 }
 
-
- struct HomeView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         SmallDogCard(dog: pompom)
     }
- }
+}

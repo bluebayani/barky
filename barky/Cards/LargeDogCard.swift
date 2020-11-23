@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import UIKit
 
+//creates a larger card for the home view.
+//shows the dog image, dog name, breed, and gender
 struct LargeDogCard: View {
     @ObservedObject var dog: Dog
 

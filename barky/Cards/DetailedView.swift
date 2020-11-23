@@ -10,57 +10,8 @@ import MessageUI
 import SwiftUI
 import UIKit
 
-struct detailedViewSimple: View {
-    @ObservedObject var dog: Dog
-    var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                Image(dog.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
-                    .padding(20)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                HStack {
-                    VStack {
-                        Text(dog.name)
-                            .font(.system(size: 32, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .foregroundColor(.black)
-                        Text(dog.breed)
-                            .font(.system(size: 18, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                        Text(dog.gender)
-                            .font(.system(size: 18, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                        Text(dog.temperament)
-                            .font(.system(size: 18, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                        Text(dog.size)
-                            .font(.system(size: 18, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                        Text("\(dog.weight) pounds")
-                            .font(.system(size: 18, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                        Text(dog.description)
-                            .font(.system(size: 16, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.gray)
-                    }.layoutPriority(100)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                Spacer()
-            }
-        }
-    }
-}
-
+// when a card is clicked, it will show this view
+// this view contains all of the dog's information, as well as the owner's contact information
 struct detailedView: View {
     @ObservedObject var dog: Dog
     @ObservedObject var profile: User
@@ -87,7 +38,7 @@ struct detailedView: View {
                             .foregroundColor(.gray)
                             .padding(EdgeInsets(top: 4, leading: 0, bottom: 10, trailing: 0))
 
-                        // MARK: works with iOS devices with the mail app installed. is disabled for xcode simulators due to lack of mail app
+                        // MARK: the button opens up the mail application. BUT it is disabled for xcode simulators due to lack of mail app
 
                         Button(action: {
                             self.isShowingMailView.toggle()
@@ -104,15 +55,16 @@ struct detailedView: View {
                         .sheet(isPresented: $isShowingMailView) {
                             MailView(dog: dog, profile: profile, result: self.$result)
                         }
+
                         Text("Description")
                             .font(.system(size: 24, weight: .bold, design: .default))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.black)
-                            Text(dog.description)
-                                .font(.system(size: 16, weight: .bold, design: .default))
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                                .foregroundColor(.gray)
-                                .padding(EdgeInsets(top: 4, leading: 0, bottom: 10, trailing: 0))
+                        Text(dog.description)
+                            .font(.system(size: 16, weight: .bold, design: .default))
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                            .foregroundColor(.gray)
+                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 10, trailing: 0))
                         Text("Overview")
                             .font(.system(size: 24, weight: .bold, design: .default))
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -178,7 +130,7 @@ struct MailView: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
-        // populates the email with dog's name, owners email, and a default message
+        // populates the email with dog's name, owners email, and a default message.
         let vc = MFMailComposeViewController()
         vc.setToRecipients(["\(profile.email)"])
         vc.setSubject("Bark! Inquiry about \(dog.name)")

@@ -11,7 +11,7 @@ import SwiftUI
 struct barkyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }
